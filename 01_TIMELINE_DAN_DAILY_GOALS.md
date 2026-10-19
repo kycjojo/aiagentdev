@@ -1,41 +1,42 @@
 # Master Timeline & Daily Goals (19 Oktober - 14 November 2026)
 
-Dokumen ini memetakan rencana kerja harian secara presisi untuk memenangkan **Garda Tech National Innovation Competition (GTNIC) 2026 - Kategori AI Agent Development**.
+Panduan aksi harian terstruktur untuk memenangkan **GTNIC 2026 - Kategori AI Agent Development**.
+Total durasi: **23 Hari Pengerjaan Karya (19 Okt - 10 Nov) + 4 Hari Grand Final (11 - 14 Nov)**.
 
-Total durasi: **23 Hari Kerja (Pengerjaan Karya) + 4 Hari (Grand Final Prep)**.
+Prinsip kita: **Setiap hari wajib ada output konkret yang terverifikasi.**
 
 ---
 
 ## FASE 1: Problem Definition, Data Mock, & Scaffolding (19 - 22 Oktober)
 *Target: Mengunci use case enterprise bernilai tinggi, menyiapkan mock dataset realistis, dan setup arsitektur dasar.*
 
-### 19 Oktober (Hari Ini) - Domain Lock & Setup Repo
-* **Goal:** Repositori siap, seluruh acuan lomba terdokumentasi di repo, dan use case industri terkunci.
+### 19 Oktober (Hari Ini) - Domain Lock & Setup Mentoring Hub
+* **Goal:** Repositori mentoring aktif, seluruh acuan lomba terdokumentasi, dan use case industri terkunci.
 * **Aksi:**
-  1. Inisialisasi repo GitHub publik `kycjojo/aiagentdev`.
-  2. Dokumentasikan seluruh ekstraksi video Technical Meeting, aturan lomba, dan spesifikasi proposal.
-  3. Kunci 1 domain use case operasional enterprise (contoh: Autonomous Finance & Procurement Audit Agent).
-* **Output Verifikasi:** Commit dan push ke GitHub berhasil, dokumen panduan lengkap di folder `docs/`.
+  1. Setup repositori mentoring GitHub `kycjojo/aiagentdev` berisi seluruh panduan strategis (.md).
+  2. Kunci 1 use case industri nyata (misal: Finance & Procurement Audit Agent).
+  3. Tetapkan nama tim dan identitas agen.
+* **Output Verifikasi:** Repositori GitHub ter-update dan use case disepakati.
 
 ### 20 Oktober - Data Schema & Mock Enterprise Dataset
 * **Goal:** Menyiapkan skenario uji data riil yang akan dipecahkan oleh agen.
 * **Aksi:**
-  1. Buat folder `data/` dengan sampel dokumen operasional: 5 invoice mock (format teks/PDF), 1 database transaksi PO (SQLite/JSON), dan 1 berkas SOP pengadaan barang/jasa.
-  2. Masukkan kasus uji spesifik: transaksi normal, selisih nominal (anomali harga), dan vendor mencurigakan.
-* **Output Verifikasi:** Script parser lokal mampu membaca seluruh file mock tanpa gagal.
+  1. Siapkan dokumen operasional mock: 5 invoice bisnis (PDF/teks), 1 tabel transaksi database PO (SQLite/JSON), dan 1 berkas SOP pengadaan perusahaan.
+  2. Rancang skenario anomali: invoice normal, invoice beda nominal (overbilling), dan transaksi tanpa PO resmi.
+* **Output Verifikasi:** Script pembaca dataset mock lokal dapat mengekstrak data tanpa gagal.
 
 ### 21 Oktober - Tool Interface & System Prompt Engineering
 * **Goal:** Merancang kontrak antarmuka 3 tools utama dan system prompt ReAct agen.
 * **Aksi:**
-  1. Tulis skema Pydantic untuk input/output tool di `src/tools/base.py`.
-  2. Rancang system prompt yang mewajibkan loop ReAct (Thought > Action > Observation) dengan batasan peran enterprise.
+  1. Tulis skema Pydantic untuk input/output tool (Tool 1: Data Parser, Tool 2: Cross-Checker, Tool 3: Action Dispatcher).
+  2. Rancang system prompt kepribadian agen yang mewajibkan loop ReAct (Thought > Action > Observation).
 * **Output Verifikasi:** Unit test schema tool berhasil tereksekusi tanpa type error.
 
 ### 22 Oktober - Tracer Test & Review Fase 1
-* **Goal:** Agen mampu menerima user request dan mengembalikan alur tahapan kerja (execution plan).
+* **Goal:** Agen mampu menerima user request dan mengembalikan rencana langkah kerja (execution plan).
 * **Aksi:**
-  1. Buat test runner `tests/test_planner.py`.
-  2. Uji agen dengan kalimat instruksi kompleks; pastikan agen memecah tugas menjadi minimal 3 langkah logis.
+  1. Buat test runner lokal.
+  2. Uji agen dengan instruksi bisnis kompleks; pastikan agen memecah tugas menjadi minimal 3 langkah logis.
 * **Output Verifikasi:** Log terminal menampilkan breakdown langkah kerja secara berurutan.
 
 ---
@@ -46,16 +47,16 @@ Total durasi: **23 Hari Kerja (Pengerjaan Karya) + 4 Hari (Grand Final Prep)**.
 ### 23 Oktober - Tool 1: Data Query & Document Ingestion
 * **Goal:** Agen mampu mengekstrak data dari dokumen/database secara terstruktur.
 * **Aksi:**
-  1. Implementasi tool pembaca file invoice dan query data pesanan/pembelian.
-  2. Normalisasi data mentah menjadi format JSON standar (nomor PO, nama vendor, tanggal, item barang, subtotal, pajak).
-* **Output Verifikasi:** Tool 1 berhasil mengekstrak 100% data kunci dari file sampel secara mandiri.
+  1. Implementasi tool pembaca invoice dan query basis data pesanan/pembelian.
+  2. Normalisasi data mentah menjadi format JSON standar (nomor PO, vendor, tanggal, item barang, nominal, pajak).
+* **Output Verifikasi:** Tool 1 berhasil mengekstrak 100% field data penting dari file sampel tanpa bantuan LLM.
 
 ### 24 Oktober - Tool 2 & 3: Action Execution & Reconciliation
 * **Goal:** Agen mampu memvalidasi silang data dan mengeksekusi aksi/notifikasi nyata.
 * **Aksi:**
-  1. Implementasi Tool 2: Verifikasi silang nominal PO vs tagihan invoice vs bukti mutasi.
-  2. Implementasi Tool 3: Action Dispatcher (generate ringkasan PDF laporan audit & kirim webhook notifikasi status).
-* **Output Verifikasi:** Tool 3 mampu meng-output file laporan hasil rekonsiliasi dan webhook mock terpanggil.
+  1. Implementasi Tool 2: Rekonsiliasi silang nominal PO vs tagihan invoice vs bukti mutasi.
+  2. Implementasi Tool 3: Action Dispatcher (generate laporan audit PDF & trigger webhook notifikasi status).
+* **Output Verifikasi:** Tool 3 mampu meng-output file laporan hasil rekonsiliasi dan mock webhook terpanggil.
 
 ### 25 Oktober - The ReAct Autonomous Loop
 * **Goal:** LLM secara otonom memilih dan mengeksekusi tools dalam loop dinamis sampai tugas tuntas.
@@ -120,7 +121,7 @@ Total durasi: **23 Hari Kerja (Pengerjaan Karya) + 4 Hari (Grand Final Prep)**.
 * **Output Verifikasi:** URL publik dapat diakses dengan respons status HTTP 200 OK.
 
 ### 02 November - Public Stability & Cross-Device Testing
-* **Goal:** Memastikan tidak ada bug koneksi bagi penguji luar.
+* **Goal:** Memastikan tidak ada kendala akses bagi penguji luar.
 * **Aksi:**
   1. Uji akses URL publik melalui Incognito Mode, jaringan seluler, dan browser berbeda.
   2. Uji skenario stres ringan untuk memastikan API tidak timeout.
@@ -190,7 +191,7 @@ Total durasi: **23 Hari Kerja (Pengerjaan Karya) + 4 Hari (Grand Final Prep)**.
 ### 09 November (HARI SUBMIT UTAMA) - Submit Google Form
 * **Goal:** Seluruh berkas resmi terkirim melalui formulir panitia.
 * **Aksi:**
-  1. Pastikan repo GitHub `kycjojo/aiagentdev` berstatus **PUBLIC** dan file rahasia/API key bersih.
+  1. Pastikan repo GitHub project berstatus **PUBLIC** dan file rahasia/API key bersih.
   2. Tanda tangani Surat Pernyataan Keaslian Karya (scan ke PDF).
   3. Buka Google Form resmi GTNIC 2026, isi:
      * Nama Tim

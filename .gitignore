@@ -1,30 +1,9 @@
-# Byte-compiled / optimized / ambient files
-__pycache__/
-*.py[cod]
-*$py.class
-
-# Environments
-.env
-.env.local
-venv/
-.venv/
-env/
-
-# Distribution / packaging
-dist/
-build/
-*.egg-info/
-
-# IDE & Editor
-.vscode/
-.idea/
-*.swp
-*.swo
-
 # OS files
 .DS_Store
 Thumbs.db
 
-# Temp / Cache
-tmp/
-*.log
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
