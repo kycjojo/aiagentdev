@@ -1,52 +1,59 @@
 # AI Agent Development - GTNIC 2026
 
-Repositori pengembangan AI Agent untuk **Garda Tech National Innovation Competition (GTNIC) 2026**.
+Repositori resmi pengembangan proyek AI Agent untuk **Garda Tech National Innovation Competition (GTNIC) 2026**.
+
 * **Kategori:** AI Agent Development
 * **Sub-tema:** Enterprise Productivity (Fokus: Enterprise & Industry)
-* **Periode Pengerjaan:** 19 Oktober - 10 November 2026 (Deadline: 23.59 WIB)
-* **Grand Final:** 14 November 2026 (Top 5 Finalists)
+* **Penyelenggara:** Garda Tech
+* **Periode Pengerjaan:** 19 Oktober - 10 November 2026 (Deadline Submit: 23.59 WIB)
+* **Pengumuman Top 5:** 12 November 2026
+* **Grand Final & Exhibition:** 14 November 2026 (Live Pitching via Zoom)
 
 ---
 
-## 1. Ringkasan & Sasaran Utama
+## 1. Indeks Dokumen & Acuan Lomba
 
-Membangun AI Agent otonom untuk otomasi alur kerja operasional enterprise nyata.
-Bukan sekadar "LLM Wrapper", melainkan sistem yang memiliki:
-1. **Multi-Step Reasoning & Planning:** Mampu memecah instruksi bisnis kompleks menjadi tahapan eksekusi logis.
-2. **Tool Calling & Real Action Execution:** Integrasi API, query basis data, parsing dokumen, dan dispatching aksi ke sistem eksternal.
-3. **Knowledge Retrieval (RAG):** Mengambil dan menyelaraskan keputusan dengan regulasi, SOP, atau dokumen internal perusahaan.
-4. **Safety & Guardrails:** Validasi skema output terstruktur dan pemulihan otomatis jika tool call gagal.
+Seluruh hasil analisis video Technical Meeting, aturan penilaian, panduan proposal, dan action plan harian telah didokumentasikan secara terstruktur di folder `docs/`:
+
+1. [**`docs/TIMELINE.md`**](docs/TIMELINE.md)
+   * Master action plan harian per tanggal (19 Oktober - 14 November 2026).
+   * Memuat **Goals**, **Aksi Eksekusi**, dan **Output Verifikasi** harian untuk 7 Fase kerja.
+2. [**`docs/TECHNICAL_MEETING_EXTRACTION.md`**](docs/TECHNICAL_MEETING_EXTRACTION.md)
+   * Ekstraksi lengkap video Technical Meeting 24m38s (`AI AGENT .mp4`).
+   * Rincian slide-by-slide (Slide 01 - 16), timestamp, contoh kasus industri, dan poin sesi Q&A.
+3. [**`docs/COMPETITION_RULES.md`**](docs/COMPETITION_RULES.md)
+   * Ketentuan dasar lomba, batasan tim, larangan keras (anti-chatbot wrapper).
+   * Rubrik penilaian resmi 100% dan checklist mitigasi 5 kesalahan fatal (Slide 15).
+4. [**`docs/PROPOSAL_SPEC.md`**](docs/PROPOSAL_SPEC.md)
+   * Aturan format fisik dokumen proposal PDF (A4, TNR 12 pt, spasi 1.5, margin 4-3-3-3, maks. 15 hal).
+   * Rincian struktur 8 komponen wajib isi proposal.
 
 ---
 
-## 2. Bobot Penilaian (Judging Criteria)
+## 2. Sasaran Teknis Utama (Mengamankan 70% Bobot Juri)
 
-Total penilaian berbobot 100%, dengan **70% fokus pada kapabilitas teknis inti**:
+Juri mengalokasikan **70% nilai pada kapabilitas teknis inti agen**. Proyek ini dirancang agar memenuhi 4 pilar teknis tersebut:
 
-| Kriteria | Bobot | Deskripsi |
+| Kriteria Penilaian | Bobot | Target Implementasi Teknis |
 | :--- | :---: | :--- |
-| **Kapabilitas & Otonomi Agen** | **25%** | Kemandirian agen menyelesaikan tugas dari awal sampai selesai tanpa campur tangan manual |
-| **Penalaran, Perencanaan & Keputusan** | **15%** | Kualitas alur reasoning, logika pemilihan langkah, dan adaptabilitas keputusan |
-| **Penggunaan Alat & Eksekusi Tindakan** | **15%** | Kemampuan memanggil tools, query data riil, dan mutasi aksi yang aman |
-| **Arsitektur Teknis & Rekayasa Sistem** | **15%** | Kebersihan kode, modularitas, penanganan guardrails, error recovery |
-| **Inovasi & Kreativitas** | **10%** | Keunikan pendekatan solusi dibanding automasi konvensional |
-| **Dampak Masalah & Nilai Bisnis** | **10%** | Penghematan waktu/biaya nyata bagi operasional industri target |
-| **Pengalaman & Kemudahan Pengguna** | **5%** | Kemudahan antarmuka dashboard dan kejelasan status eksekusi agen |
-| **Demonstrasi, Presentasi & Dokumentasi** | **5%** | Kualitas proposal PDF dan video walkthrough live demo |
+| **Kapabilitas & Otonomi Agen** | **25%** | Agen menyelesaikan siklus tugas operasional dari awal sampai akhir tanpa intervensi manual user |
+| **Penalaran, Perencanaan & Keputusan** | **15%** | Loop ReAct / Plan-and-Execute yang memecah problem bisnis kompleks menjadi langkah terstruktur |
+| **Penggunaan Alat & Eksekusi Tindakan** | **15%** | Tool calling nyata untuk query database, parsing dokumen bisnis, dan dispatching aksi ke sistem eksternal |
+| **Arsitektur Teknis & Rekayasa Sistem** | **15%** | Guardrails validasi schema (Pydantic), proteksi halusinasi, dan pemulihan otomatis jika tool gagal (fallback) |
+| **Inovasi & Kreativitas** | **10%** | Solusi agen cerdas adaptif dibanding otomasi rule-based konvensional |
+| **Dampak Masalah & Nilai Bisnis** | **10%** | Metrik kuantitatif penghematan waktu kerja operasional dan penurunan tingkat kesalahan manusia |
+| **Pengalaman & Kemudahan Pengguna** | **5%** | Dashboard web modern yang menampilkan alur pemikiran agen (thought stream) secara live |
+| **Demonstrasi, Presentasi & Dokumen** | **5%** | Kerapian proposal 15 halaman dan kejelasan video walkthrough demo 3 - 5 menit |
 
 ---
 
-## 3. Berkas Wajib Pengumpulan (Google Form Submission)
+## 3. Berkas Wajib Pengumpulan (Deadline: 10 Nov 2026, 23.59 WIB)
 
-Deadline: **10 November 2026, 23.59 WIB**
-1. **Live Interface Web:** Tautan aplikasi agen yang dapat diakses publik.
-2. **Repositori GitHub Publik:** Repositori kode sumber dengan dokumentasi lengkap.
-3. **Proposal PDF (Maks. 15 Halaman):** 
-   * Format: A4, Times New Roman 12, Spasi 1.5, Margin Kiri 4 cm, Lainnya 3 cm.
-   * Nama file: `GTNIC2026_AIAgent_NamaTim.pdf`
-   * Cover wajib mencantumkan logo resmi GTNIC 2026.
-4. **Video Demo (3 - 5 Menit):** Walkthrough dan demo interaktif live via YouTube / Google Drive publik.
-5. **Surat Pernyataan Keaslian Karya:** Bertanda tangan materai/resmi menyatakan 100% orisinal.
+1. **Link Live Interface Web:** Aplikasi web AI Agent yang dapat diakses publik.
+2. **Link Repositori GitHub Publik:** Repositori kode sumber dengan dokumentasi lengkap.
+3. **Proposal PDF (Maks. 15 Halaman):** Format nama file `GTNIC2026_AIAgent_NamaTim.pdf` dengan logo GTNIC 2026 di cover.
+4. **Link Video Demo (3 - 5 Menit):** Walkthrough dan live demo di YouTube / Google Drive publik.
+5. **Surat Pernyataan Keaslian Karya:** Berkas resmi bertanda tangan menyatakan orisinalitas 100%.
 
 ---
 
@@ -56,34 +63,36 @@ Deadline: **10 November 2026, 23.59 WIB**
 aiagentdev/
 ├── README.md
 ├── requirements.txt
+├── .env.example
 ├── .gitignore
 ├── docs/
-│   ├── TIMELINE.md              # Rencana aksi per hari (19 Okt - 14 Nov)
-│   ├── COMPETITION_RULES.md     # Panduan teknis & checklist mitigasi kesalahan
-│   └── PROPOSAL_SPEC.md         # Rincian 8 komponen isi proposal resmi
+│   ├── TIMELINE.md                     # Master timeline harian & daily goals (19 Okt - 14 Nov)
+│   ├── TECHNICAL_MEETING_EXTRACTION.md # Ekstraksi lengkap rekaman video TM GTNIC 2026 (Slide 1-16)
+│   ├── COMPETITION_RULES.md            # Ketentuan teknis, rubrik penilaian, & common mistakes
+│   └── PROPOSAL_SPEC.md                # Standar 8 komponen wajib proposal 15 halaman
 ├── src/
-│   ├── agent/                   # Core agent loop, planner, state machine
+│   ├── agent/                          # Core autonomous agent & ReAct planner loop
 │   │   ├── __init__.py
 │   │   ├── core.py
 │   │   └── planner.py
-│   ├── tools/                   # Integrasi tool eksekusi (DB, API, Document Parser)
+│   ├── tools/                          # Interface eksekusi tool nyata (DB, parser, API)
 │   │   ├── __init__.py
 │   │   └── base.py
-│   └── api/                     # Backend API & WebSocket/SSE streaming
+│   └── api/                            # FastAPI server backend & streaming endpoint
 │       ├── __init__.py
 │       └── server.py
-└── data/                        # Sample dataset mock enterprise & test cases
+└── data/                               # Sample mock dataset operasional enterprise
+    └── .gitkeep
 ```
 
 ---
 
-## 5. Timeline Ringkas
+## 5. Ringkasan Jadwal Pengerjaan
 
-* **19 - 22 Okt:** Problem Definition, Tech Stack, & Scaffolding Arsitektur
-* **23 - 28 Okt:** Core Engine, Tool Calling, RAG, & Guardrails
-* **29 Okt - 02 Nov:** Web Dashboard Interface & Public Deployment
-* **03 - 06 Nov:** Penulisan Proposal PDF (15 Hal) & Pengujian Metrik
-* **07 - 08 Nov:** Produksi Video Walkthrough Demo (3 - 5 Menit)
-* **09 Nov:** Final Checklist, Verifikasi Publik, & Submit Google Form
-* **10 Nov:** Buffer Day (Monitoring Sistem & Uptime Demo)
-* **14 Nov:** Grand Final & Live Pitching via Zoom
+* **Fase 1 (19 - 22 Okt):** Problem Definition, Scaffolding, Data Mock & Tracer Test
+* **Fase 2 (23 - 28 Okt):** Core Engine, 3 Functional Tools, ReAct Loop, RAG, & Guardrails
+* **Fase 3 (29 Okt - 02 Nov):** Web Dashboard Interface, Thought Streaming, & Public Deployment
+* **Fase 4 (03 - 06 Nov):** Penulisan Proposal Resmi 15 Halaman & Ekspor PDF
+* **Fase 5 (07 - 08 Nov):** Rekam Skrip, Editing, & Upload Video Demo 3 - 5 Menit
+* **Fase 6 (09 - 10 Nov):** Verifikasi Seluruh Link Publik & Early Submission Google Form
+* **Fase 7 (11 - 14 Nov):** Grand Final Pitching Preparation & Exhibition
